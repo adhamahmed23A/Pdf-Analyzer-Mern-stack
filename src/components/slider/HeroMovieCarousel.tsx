@@ -14,7 +14,7 @@ export default function HeroMovieCarousel() {
       stopOnInteraction: false,
     }),
   );
-  throw new Error("error during rendering");
+
   return (
     <div
       className="relative overflow-hidden rounded-lg"
