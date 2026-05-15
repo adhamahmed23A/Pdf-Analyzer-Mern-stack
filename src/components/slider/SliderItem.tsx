@@ -7,6 +7,7 @@ import type { MovieType } from "@/types/movie.type";
 import { getImageUrl } from "@/utils/image.util";
 import { getGenre } from "@/utils/genre.util";
 import { handleDescribtion } from "@/utils/describtionInCard.util";
+import WatchTrailerBtn from "./WatchTrailerBtn";
 
 type Props = {
   movie: MovieType;
@@ -110,9 +111,7 @@ const SliderItem = ({ movie }: Props) => {
             variants={childVariants}
             className="flex items-center gap-4"
           >
-            <Button className="cursor-pointer p-5 font-normal hover:bg-primary/90 transition-all tracking-tight text-base mt-8">
-              Watch Trailer
-            </Button>
+            <WatchTrailerBtn id={movie.id} />
             <Button
               variant={"link"}
               className="cursor-pointer p-5 flex justify-center items-center font-normal transition-all tracking-tight text-base text-foreground/70 mt-8"
