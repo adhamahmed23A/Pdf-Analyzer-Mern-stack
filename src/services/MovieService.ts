@@ -1,7 +1,7 @@
 import { apiClient } from "@/api/axios";
 import type { MovieType } from "@/types/movie.type";
 
-type PaginatedResponse<T> = {
+export type PaginatedResponse<T> = {
   dates: { maximum: string; minimum: string };
   page: number;
   results: T[];
