@@ -54,9 +54,6 @@ const SliderItem = ({ movie }: Props) => {
         {/* Cinematic Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
 
-        {/* Left Shadow Fade */}
-        <div className="absolute inset-y-0 left-0 w-3/3 bg-gradient-to-r from-black/80 to-transparent" />
-
         {/* Content */}
         <motion.div
           className="absolute bottom-0 z-10 max-w-2xl p-10 md:p-16"
