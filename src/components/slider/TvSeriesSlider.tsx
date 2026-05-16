@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { staggerVariant } from "@/constants/Variants";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import { CircularProgress } from "./CircularProgress";
 const TvSeriesSlider = () => {
   const { data } = useAiringTodaySeries();
 
@@ -68,8 +69,11 @@ const TvSeriesSlider = () => {
                       initial="hidden"
                       animate="visible"
                       exit="exit"
-                      className=" h-fit p-1"
+                      className=" h-fit p-1 relative"
                     >
+                      <div className="absolute inset-2 z-50">
+                        <CircularProgress rating={series.vote_average} />
+                      </div>
                       <img
                         src={getImageUrl(series.poster_path)}
                         alt={series.name}
