@@ -12,7 +12,11 @@ export const NavItems = () => {
         <ul className="hidden lg:inline-flex gap-2 items-center">
           {HeaderData.navigation.map((link) => (
             <li key={link.label}>
-              <Button variant={"ghost"} asChild>
+              <Button
+                variant={"ghost"}
+                className="text-sm font-normal hover:bg-zinc-200 transition-all duration-300"
+                asChild
+              >
                 <NavLink className={"text-primary font-normal"} to={link.href}>
                   {link.label}
                 </NavLink>

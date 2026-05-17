@@ -32,7 +32,7 @@ const Header = () => {
               <div className="lg:flex hidden">
                 <Button
                   variant={"ghost"}
-                  className="cursor-pointer text-sm font-normal"
+                  className="cursor-pointer text-sm font-normal hover:bg-zinc-200 transition-all duration-300 "
                 >
                   Login
                 </Button>

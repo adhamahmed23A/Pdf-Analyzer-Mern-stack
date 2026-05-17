@@ -20,7 +20,7 @@ import Profile from "./profile";
 export const MobileNav = () => {
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger asChild>
         <Button size={"icon"} variant={"ghost"} className="cursor-pointer">
           <Menu />
         </Button>
