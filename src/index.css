@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -26,6 +28,7 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-brand-color: var(--brand-color);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -49,6 +52,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
+  --brand-color: #3852b4;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -99,14 +103,23 @@ input:focus {
   box-shadow: none;
   ring: 0;
 }
+.geist {
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .main-x-padding {
-  @apply px-4 sm:px-6 md:px-8 lg:px-10;
+  @apply px-4  md:px-8 lg:px-16;
 }
 
 .button {
   @apply p-3 cursor-pointer font-normal hover:bg-primary/90 transition-all tracking-tight;
 }
 
+.logo-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-primary via-primary/80 to-primary/90;
+}
 @layer base {
   * {
     @apply border-border;
