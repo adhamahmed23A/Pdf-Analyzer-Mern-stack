@@ -11,45 +11,43 @@ import { Separator } from "@/components/ui/separator";
 export const Navbar = () => {
   return (
     <>
-      <nav className="">
-        <div className="w-full absolute bg-white/5  backdrop-blur-md dark:bg-black/3 flex justify-center main-x-padding py-1 z-50">
-          <div className="w-full flex  items-center justify-between ">
-            <div className="flex items-center gap-2">
-              <div className="lg:hidden flex">
-                <MobileNav />
-              </div>
-              <Logo />
+      <nav className="w-full flex justify-center main-x-padding py-1">
+        <div className="w-full flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="lg:hidden flex">
+              <MobileNav />
             </div>
-            <div className="flex items-center gap-6">
-              <div className="hidden lg:flex items-center gap-8">
-                {HeaderData.navigation.map((link) => (
-                  <NavLink
-                    key={link.label}
-                    to={link.href}
-                    className="text-sm hover-text "
-                  >
-                    {link.label}
-                  </NavLink>
-                ))}
-              </div>
-              <Separator
-                orientation="vertical"
-                className="lg:flex hidden  h-6 my-auto"
-              />
-              <div className="flex items-center gap-4">
-                <Button
-                  className="lg:flex hidden hover:bg-primary/5 font-normal text-sm  cursor-pointer  "
-                  variant={"outline"}
+            <Logo />
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-8">
+              {HeaderData.navigation.map((link) => (
+                <NavLink
+                  key={link.label}
+                  to={link.href}
+                  className="text-sm hover-text "
                 >
-                  <NavLink to={"/login"}>Login</NavLink>
-                </Button>
-                <Button
-                  className="bg-brand-color hover:bg-brand-color/90 font-normal text-sm text-white cursor-pointer  "
-                  variant={"default"}
-                >
-                  <NavLink to={"/login"}>Upload Now</NavLink>
-                </Button>
-              </div>
+                  {link.label}
+                </NavLink>
+              ))}
+            </div>
+            <Separator
+              orientation="vertical"
+              className="lg:flex hidden  h-6 my-auto"
+            />
+            <div className="flex items-center gap-4">
+              <Button
+                className="lg:flex hidden hover:bg-primary/5 font-normal text-sm  cursor-pointer  "
+                variant={"outline"}
+              >
+                <NavLink to={"/login"}>Login</NavLink>
+              </Button>
+              <Button
+                className="bg-brand-color hover:bg-brand-color/90 font-normal text-sm text-white cursor-pointer  "
+                variant={"default"}
+              >
+                <NavLink to={"/login"}>Upload Now</NavLink>
+              </Button>
             </div>
           </div>
         </div>

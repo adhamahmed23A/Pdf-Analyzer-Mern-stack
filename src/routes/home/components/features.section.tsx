@@ -9,7 +9,7 @@ import { FeatureCard } from "./features.card";
 
 export const FeaturesSection = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen ">
       {/* Grid Pattern */}
       <GridPattern
         x={-1}
