@@ -21,13 +21,17 @@ export const MobileNav = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button size={"icon"} variant={"ghost"} className="cursor-pointer">
-          <Menu />
+        <Button
+          size={"icon"}
+          variant={"outline"}
+          className="hover:bg-primary/5 bg-transparent cursor-pointer"
+        >
+          <Menu className="text-primary" />
         </Button>
       </SheetTrigger>
       <SheetContent
         showCloseButton={false}
-        className="bg-zinc-100 max-w-80 rounded-r-2xl  py-1 "
+        className="bg-zinc-100/95 dark:bg-zinc-900/95 max-w-80 rounded-r-2xl  py-1 "
         side="left"
       >
         <SheetHeader className="px-2">
@@ -47,7 +51,7 @@ export const MobileNav = () => {
                       "text-primary text-base px-2 py-1.5 rounded-lg transition-all duration-100 flex gap-1.5 items-center font-normal",
                       isActive
                         ? "text-brand-color hover:bg-transparent border-l-[1.5px] border-brand-color rounded-none "
-                        : "hover:bg-zinc-200 hover:text-primary/90",
+                        : "hover:bg-zinc-200 dark:hover:bg-zinc-800 hover-text",
                     )
                   }
                   to={link.href}
@@ -65,7 +69,7 @@ export const MobileNav = () => {
             to={"/about"}
             className={() =>
               cn(
-                "text-primary hover:bg-zinc-200 hover:text-primary/90 text-base px-2 py-1.5 rounded-lg transition-all duration-100 flex gap-1.5 items-center font-normal",
+                "text-primary hover:bg-zinc-200 dark:hover:bg-zinc-800 hover-text text-base px-2 py-1.5 rounded-lg transition-all duration-100 flex gap-1.5 items-center font-normal",
               )
             }
           >
