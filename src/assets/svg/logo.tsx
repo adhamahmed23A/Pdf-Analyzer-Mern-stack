@@ -1,6 +1,10 @@
-const Logo = () => {
+type Props = {
+  width?: string;
+  height?: string;
+};
+const Logo = ({ width = "120", height = "48" }: Props) => {
   return (
-    <svg width="120" height="48" viewBox="0 0 185 48" fill="none">
+    <svg width={width} height={height} viewBox="0 0 185 48" fill="none">
       <g filter="url(#filter0_iii_3046_38806)">
         <g clipPath="url(#clip0_3046_38806)">
           <rect width="48" height="48" rx="12" fill="#1D4ED8" />
