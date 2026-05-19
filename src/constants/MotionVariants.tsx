@@ -28,4 +28,8 @@ export const MotionVariants = {
     container,
     item,
   },
+  cardAnimation: {
+    hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
+    show: { opacity: 1, y: 0, filter: "blur(0px)" },
+  },
 };
