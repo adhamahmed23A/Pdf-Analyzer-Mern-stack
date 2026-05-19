@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 const Profile = () => {
   return (
     <div className="flex flex-col gap-2">
-      <div className="p-2 flex gap-2 rounded-lg border border-primary/10  cursor-pointer hover:bg-zinc-200 duration-200">
+      <div className="p-2 flex gap-2 rounded-lg border border-primary/10  cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-800  duration-200">
         <div className="">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
