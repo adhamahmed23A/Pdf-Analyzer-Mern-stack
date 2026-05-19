@@ -5,23 +5,10 @@ import {
   MessageSquare,
   Upload,
 } from "lucide-react";
-import { IconBrandFacebook, IconBrandGithub } from "@tabler/icons-react";
+
 export const HeaderData = {
   AnnouncementAuthor: "Adham Ahmed",
-  socials: [
-    {
-      label: "GitHub",
-      href: "https://github.com/adhamahmed23A",
-      icon: IconBrandGithub,
-      color: "black",
-    },
-    {
-      label: "Facebook",
-      href: "https://facebook.com/",
-      icon: IconBrandFacebook,
-      color: "#3852b4",
-    },
-  ],
+
   navigation: [
     {
       label: "Home",

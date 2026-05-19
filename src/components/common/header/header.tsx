@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 const Header = () => {
   return (
     <header className="fixed top-0 z-50 w-full bg-white/5 dark:bg-black/1 backdrop-blur-xl border-b border-white/10 ">
-      <div className="flex flex-col gap-0">
+      <div className="flex flex-col gap-0 ">
         <div>
           <AnnouncementBar />
         </div>
