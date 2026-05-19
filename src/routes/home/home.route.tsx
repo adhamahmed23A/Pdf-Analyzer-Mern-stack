@@ -12,7 +12,7 @@ export const HomeRoute = () => {
     <>
       <div className="w-full min-h-screen mb-12 flex flex-col gap-6 ">
         <HeroWrapper>
-          <section className="w-full flex justify-center items-center main-x-padding mt-22 lg:mt-32 ">
+          <section className="w-full flex justify-center items-center main-x-padding mt-26 lg:mt-32 ">
             <HeroSection />
           </section>
         </HeroWrapper>
