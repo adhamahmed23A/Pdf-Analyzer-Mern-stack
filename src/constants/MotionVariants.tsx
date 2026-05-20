@@ -32,4 +32,28 @@ export const MotionVariants = {
     hidden: { opacity: 0, filter: "blur(4px)" },
     show: { opacity: 1, filter: "blur(0px)" },
   },
+  staggerAuthPageAnimation: {
+    container: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          delayChildren: 0.3,
+          staggerChildren: 0.1,
+        },
+      },
+    },
+    item: {
+      hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
+      show: {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: {
+          duration: 0.3,
+          ease: "easeOut" as const, // smooth spring-like ease
+        },
+      },
+    },
+  },
 };

@@ -1,6 +1,7 @@
 /*
  * Imports
  */
+import { GlowingIcon } from "@/components/common/glowing.icon";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { Marquee } from "@/components/ui/marquee";
 import { TrustedByData } from "@/constants/MarqueeData";
@@ -36,16 +37,7 @@ export const MarqueeSection = () => {
               )}
             >
               <div className="w-full h-full flex flex-col items-center justify-center gap-4 p-4">
-                <div
-                  className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center",
-                    "bg-[#3852b4]/15 border border-[#3852b4]/25",
-                    "shadow-[0_0_12px_rgba(56,82,180,0.15)]",
-                    "group-hover:shadow-[0_0_18px_rgba(56,82,180,0.3)] transition-all duration-300",
-                  )}
-                >
-                  <card.icon size={20} className="text-[#6278cc]" />
-                </div>
+                <GlowingIcon Icon={card.icon} />
 
                 <span className="text-xs font-medium text-center text-[#8fa3e8] leading-tight px-1">
                   {card.label}

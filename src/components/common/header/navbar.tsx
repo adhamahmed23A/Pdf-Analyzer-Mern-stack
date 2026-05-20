@@ -40,7 +40,7 @@ export const Navbar = () => {
                 className="lg:flex hidden hover:bg-primary/5 font-normal text-sm  cursor-pointer  "
                 variant={"outline"}
               >
-                <NavLink to={"/login"}>Login</NavLink>
+                <NavLink to={"/auth/login"}>Login</NavLink>
               </Button>
               <Button
                 className="bg-brand-color hover:bg-brand-color/90 font-normal text-sm text-white cursor-pointer  "

@@ -10,7 +10,7 @@
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: "Geist Variable", sans-serif;
-
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -43,44 +43,71 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-shiny-text: shiny-text 8s infinite;
+
   @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
     }
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
-  --animate-aurora: aurora 8s ease-in-out infinite alternate
-;
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
   @keyframes aurora {
-  0% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);}
-  25% {
-    background-position: 50% 100%;
-    transform: rotate(5deg) scale(1.1);}
-  50% {
-    background-position: 100% 50%;
-    transform: rotate(-3deg) scale(0.95);}
-  75% {
-    background-position: 50% 0%;
-    transform: rotate(3deg) scale(1.05);}
-  100% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);}}
+    0% {
+      background-position: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
+    }
+    25% {
+      background-position: 50% 100%;
+      transform: rotate(5deg) scale(1.1);
+    }
+    50% {
+      background-position: 100% 50%;
+      transform: rotate(-3deg) scale(0.95);
+    }
+    75% {
+      background-position: 50% 0%;
+      transform: rotate(3deg) scale(1.05);
+    }
+    100% {
+      background-position: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
+    }
+  }
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform: translateX(0);}
-  to {
-    transform: translateX(calc(-100% - var(--gap)));}}
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);}
-  to {
-    transform: translateY(calc(-100% - var(--gap)));}}}
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
 
 :root {
   --background: #f4f4f5;
@@ -155,8 +182,8 @@ input:focus {
   @apply p-3 cursor-pointer font-normal hover:bg-primary/90 transition-all tracking-tight;
 }
 
-.logo-gradient {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-primary via-primary/80 to-primary/90;
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-r dark:from-zinc-200 dark:via-zinc-300 dark:to-zinc-400 from-zinc-700 via-zinc-800 to-zinc-900;
 }
 .hover-text {
   @apply text-primary dark:hover:text-white hover:text-black transition-colors;
