@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { MotionVariants } from "@/constants/MotionVariants";
 import { motion } from "motion/react";
 import type { LucideProps } from "lucide-react";
+import { GlowingIcon } from "@/components/common/glowing.icon";
 const { cardAnimation } = MotionVariants;
 
 /*
@@ -42,16 +43,7 @@ export const FeatureCard = ({ feature, index }: Props) => {
         )}
       >
         {/* Icon */}
-        <div
-          className={cn(
-            "w-11 h-11 rounded-xl flex items-center justify-center mb-4",
-            "bg-[#3852b4]/15 border border-[#3852b4]/25",
-            "shadow-[0_0_12px_rgba(56,82,180,0.15)]",
-            "group-hover:shadow-[0_0_20px_rgba(56,82,180,0.35)] transition-all duration-300",
-          )}
-        >
-          <feature.icon size={20} className="text-[#6278cc]" />
-        </div>
+        <GlowingIcon Icon={feature.icon} wrapperClassName="mb-4 w-11 h-11" />
 
         {/* Text */}
         <h3 className="text-sm font-semibold text-white mb-2 tracking-tight">
