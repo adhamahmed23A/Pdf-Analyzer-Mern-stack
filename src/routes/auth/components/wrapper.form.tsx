@@ -32,7 +32,7 @@ export const WrapperForm = ({ className, children, type }: Props) => {
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3 }}
       className={cn(
-        "min-h-screen flex justify-center items-center px-4",
+        "min-h-screen flex justify-center items-center p-4",
         className,
       )}
     >
@@ -41,7 +41,7 @@ export const WrapperForm = ({ className, children, type }: Props) => {
         initial="hidden"
         animate="show"
         className={cn(
-          "w-full max-w-sm p-6",
+          "w-full max-w-sm p-5",
           "bg-zinc-900/30 backdrop-blur-lg rounded-xl",
           "border border-white/10",
           "shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.5)]",
@@ -60,7 +60,7 @@ export const WrapperForm = ({ className, children, type }: Props) => {
 
           {/* Divider */}
           <motion.div variants={item} className="w-full">
-            <Divider variant="solid" className="mt-1 mb-1">
+            <Divider variant="solid" className="mt-1 mb-0.5">
               Or continue with
             </Divider>
           </motion.div>

@@ -6,11 +6,12 @@ import { WrapperForm } from "../wrapper.form";
 import { motion } from "motion/react";
 import { CustomInput } from "../custom.input";
 import type {
+  FieldErrors,
   SubmitHandler,
   UseFormHandleSubmit,
   UseFormRegister,
 } from "react-hook-form";
-import type { TSignupFormInputs } from "../../types/form.types";
+import type { TSignupFormInputs } from "../../types/form.type";
 import { MotionVariants } from "@/constants/MotionVariants";
 import { SubmitButton } from "../submit.button";
 
@@ -23,6 +24,7 @@ type Props = {
   handleSubmit: UseFormHandleSubmit<TSignupFormInputs, TSignupFormInputs>;
   Submit: SubmitHandler<TSignupFormInputs>;
   isLoading?: boolean;
+  errors: FieldErrors<TSignupFormInputs>;
 };
 
 /*
@@ -37,46 +39,42 @@ export const SignupForm = ({
   handleSubmit,
   Submit,
   isLoading,
+  errors,
 }: Props) => {
   return (
     <>
       <WrapperForm type="signup">
         {/* Form */}
         <div className="w-full">
-          <form onSubmit={handleSubmit(Submit)}>
+          <form noValidate onSubmit={handleSubmit(Submit)}>
             {/* Form */}
             <motion.div variants={item} className="w-full">
-              <FieldGroup className="flex flex-col gap-4">
+              <FieldGroup className="flex flex-col gap-2">
                 <CustomInput
                   register={register}
                   type="text"
                   id="username"
                   htmlFor="username"
                   label="Username"
+                  error={errors.username?.message}
                 />
                 <CustomInput
                   register={register}
                   type="email"
+                  placeholder="@example.com"
                   id="email"
                   htmlFor="email"
                   label="Email"
+                  error={errors.email?.message}
                 />
-                <div className="flex justify-between items-center gap-4">
-                  <CustomInput
-                    register={register}
-                    type="password"
-                    id="password"
-                    htmlFor="password"
-                    label="Password"
-                  />
-                  <CustomInput
-                    register={register}
-                    type="password"
-                    id="confirmPassword"
-                    htmlFor="confirmPassword"
-                    label="Confirm Password"
-                  />
-                </div>
+                <CustomInput
+                  register={register}
+                  type="password"
+                  id="password"
+                  htmlFor="password"
+                  label="Password"
+                  error={errors.password?.message}
+                />
               </FieldGroup>
             </motion.div>
 
