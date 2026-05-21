@@ -19,6 +19,7 @@ type Props<TFieldValues extends FieldValues> = {
   labelClassName?: string;
   htmlFor: string;
   register: UseFormRegister<TFieldValues>;
+  error?: string;
 };
 
 export const CustomInput = <TFieldValues extends FieldValues>({
@@ -31,6 +32,7 @@ export const CustomInput = <TFieldValues extends FieldValues>({
   labelClassName,
   htmlFor,
   register,
+  error,
 }: Props<TFieldValues>) => {
   return (
     <>
@@ -45,12 +47,14 @@ export const CustomInput = <TFieldValues extends FieldValues>({
         <Input
           id={id}
           type={type}
-          placeholder={placeholder}
+          placeholder={error ? error : placeholder}
           className={cn(
-            "rounded-sm bg-zinc-100 dark:bg-zinc-900/60",
+            "rounded-sm bg-zinc-100 dark:bg-zinc-900/60 ",
             inputClassName,
+            `${error && "  placeholder:text-destructive/70 "}`,
           )}
           {...register(id)}
+          aria-invalid={error ? "true" : "false"}
         />
       </Field>
     </>

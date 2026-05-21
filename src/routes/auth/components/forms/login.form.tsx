@@ -6,11 +6,12 @@ import { WrapperForm } from "../wrapper.form";
 import { motion } from "motion/react";
 import { CustomInput } from "../custom.input";
 import type {
+  FieldErrors,
   SubmitHandler,
   UseFormHandleSubmit,
   UseFormRegister,
 } from "react-hook-form";
-import type { TLoginFormInputs } from "../../types/form.types";
+import type { TLoginFormInputs } from "../../types/form.type";
 import { MotionVariants } from "@/constants/MotionVariants";
 import { SubmitButton } from "../submit.button";
 
@@ -23,6 +24,7 @@ type Props = {
   handleSubmit: UseFormHandleSubmit<TLoginFormInputs, TLoginFormInputs>;
   Submit: SubmitHandler<TLoginFormInputs>;
   isLoading?: boolean;
+  errors: FieldErrors<TLoginFormInputs>;
 };
 
 /*
@@ -37,15 +39,16 @@ export const LoginForm = ({
   handleSubmit,
   Submit,
   isLoading,
+  errors,
 }: Props) => {
   return (
     <>
       <WrapperForm type="login">
         {/* Login Form */}
         <div className="w-full">
-          <form onSubmit={handleSubmit(Submit)}>
+          <form noValidate onSubmit={handleSubmit(Submit)}>
             <motion.div variants={item} className="w-full">
-              <FieldGroup className="flex flex-col gap-4">
+              <FieldGroup className="flex flex-col gap-2">
                 <CustomInput
                   register={register}
                   type="email"
@@ -53,6 +56,7 @@ export const LoginForm = ({
                   id="email"
                   htmlFor="email"
                   label="Email"
+                  error={errors.email?.message}
                 />
                 <div className="flex flex-col gap-2">
                   <CustomInput
@@ -61,6 +65,7 @@ export const LoginForm = ({
                     id="password"
                     htmlFor="password"
                     label="Password"
+                    error={errors.password?.message}
                   />
                   <a
                     href="#"

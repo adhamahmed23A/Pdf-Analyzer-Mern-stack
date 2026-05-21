@@ -21,11 +21,6 @@ export const HeaderAuth = ({ type }: Props) => {
           <h1 className={cn("font-bold text-lg text-gradient ")}>
             {type === "login" ? "Welcome back" : "Create a new account"}
           </h1>
-          <p className="text-sm text-muted-foreground/60">
-            {type === "login"
-              ? "Log in to your Sonorous account"
-              : "Signup using google or github "}
-          </p>
         </div>
       </div>
     </>
