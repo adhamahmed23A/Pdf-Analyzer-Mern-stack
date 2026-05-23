@@ -33,6 +33,7 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
   --color-foreground: var(--foreground);
   --color-background: var(--background);
   --radius-sm: calc(var(--radius) * 0.6);
@@ -43,6 +44,50 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-shiny-text: shiny-text 8s infinite;
+
+  /* Buttons */
+  --color-btn-brand: var(--btn-brand);
+  --color-btn-brand-hover: var(--btn-brand-hover);
+  --color-btn-brand-text: var(--btn-brand-text);
+  --color-btn-secondary: var(--btn-secondary);
+  --color-btn-secondary-hover: var(--btn-secondary-hover);
+  --color-btn-secondary-text: var(--btn-secondary-text);
+
+  --color-btn-ghost-hover: var(--btn-ghost-hover);
+  --color-btn-destructive: var(--btn-destructive);
+
+  /* Inputs */
+  --color-input-bg: var(--input-bg);
+  --color-input-bg-hover: var(--input-bg-hover);
+  --color-input-border: var(--input-border);
+  --color-input-border-focus: var(--input-border-focus);
+  --color-input-text: var(--input-text);
+  --color-input-placeholder: var(--input-placeholder);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-brand: var(--text-brand);
+
+  /* Surfaces */
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-brand: var(--surface-brand);
+
+  /* Borders */
+  --color-border-default: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-border-brand: var(--border-brand);
+
+  /* States */
+  --color-state-success: var(--state-success);
+  --color-state-warning: var(--state-warning);
+  --color-state-error: var(--state-error);
+  --color-state-info: var(--state-info);
 
   @keyframes shiny-text {
     0%,
@@ -123,18 +168,67 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.985 0 0);
+  --accent-foreground: oklch(16.376% 0.00002 271.152);
+  --btn-primary: oklch(90.67% 0.0001 271.152);
+  --btn-input-hover: oklch(92% 0.004 286.32);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
+
+  /* ── Buttons ────────────────────────────── */
+  --btn-brand: #3852b4; /* primary brand button bg       */
+  --btn-brand-hover: #2e44a0; /* primary brand button hover    */
+  --btn-brand-text: #ffffff; /* text on brand button          */
+  --btn-secondary: oklch(0.97 0 0); /* secondary button bg           */
+  --btn-secondary-hover: oklch(0.93 0 0); /* secondary button hover        */
+  --btn-secondary-text: oklch(0.205 0 0); /* text on secondary button      */
+  --btn-ghost-hover: oklch(0.93 0 0); /* ghost button hover bg         */
+  --btn-destructive: oklch(0.577 0.245 27.325); /* destructive button   */
+  --btn-destructive-hover: oklch(0.52 0.245 27.325);
+
+  /* ── Inputs ─────────────────────────────── */
+  --input-bg: oklch(1 0 0); /* input background              */
+  --input-bg-hover: oklch(0.97 0 0); /* input hover background        */
+  --input-border: oklch(0.922 0 0); /* input border                  */
+  --input-border-focus: #3852b4; /* input focused border          */
+  --input-text: oklch(0.145 0 0); /* input text color              */
+  --input-placeholder: oklch(0.556 0 0); /* input placeholder color       */
+
+  /* ── Text ───────────────────────────────── */
+  --text-primary: oklch(0% 0 0); /* headings, strong text         */
+  --text-secondary: oklch(0.38 0 0); /* body text                     */
+  --text-muted: oklch(0.556 0 0); /* labels, captions              */
+  --text-disabled: oklch(0.708 0 0); /* disabled state text           */
+  --text-brand: #3852b4; /* brand colored text            */
+  --text-on-brand: #ffffff; /* text sitting on brand bg      */
+
+  /* ── Surfaces ───────────────────────────── */
+  --surface-1: oklch(1 0 0); /* cards, modals                 */
+  --surface-2: oklch(0.97 0 0); /* subtle section bg             */
+  --surface-3: oklch(0.93 0 0); /* hover states, tags            */
+  --surface-brand: rgba(56, 82, 180, 0.08); /* brand tinted surface      */
+  --surface-brand-hover: rgba(
+    56,
+    82,
+    180,
+    0.14
+  ); /* brand tinted hover        */
+
+  /* ── Borders ────────────────────────────── */
+  --border-default: oklch(0.922 0 0); /* default border                */
+  --border-subtle: oklch(0.95 0 0); /* very subtle dividers          */
+  --border-strong: oklch(0.708 0 0); /* emphasized borders            */
+  --border-brand: rgba(56, 82, 180, 0.3); /* brand border              */
+  --border-brand-hover: rgba(56, 82, 180, 0.6); /* brand border on hover     */
+
+  /* ── States ─────────────────────────────── */
+  --state-success: oklch(0.65 0.18 145); /* success green             */
+  --state-warning: oklch(0.75 0.18 75); /* warning yellow            */
+  --state-error: oklch(0.577 0.245 27.325); /* error red            */
+  --state-info: #3852b4; /* info blue = brand         */
 }
 
 .dark {
@@ -150,19 +244,60 @@
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --accent: oklch(16.376% 0.00002 271.152);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-}
 
+  /* ── Buttons ────────────────────────────── */
+  --btn-brand: #3852b4;
+  --btn-brand-hover: #4a66cc; /* lighter on dark              */
+  --btn-brand-text: #ffffff;
+  --btn-secondary: oklch(16.376% 0.00002 271.152);
+  --btn-secondary-hover: oklch(18.842% 0.00002 271.152);
+  --btn-secondary-text: oklch(100% 0.00011 271.152);
+  --btn-ghost-hover: oklch(0.269 0 0);
+  --btn-destructive: oklch(0.704 0.191 22.216);
+  --btn-destructive-hover: oklch(0.65 0.191 22.216);
+
+  /* ── Inputs ─────────────────────────────── */
+  --input-bg: oklch(16.376% 0.00002 271.152);
+  --input-bg-hover: oklch(18.842% 0.00002 271.152);
+  --input-border: oklch(1 0 0 / 15%);
+  --input-border-focus: #3852b4;
+  --input-text: oklch(0.985 0 0);
+  --input-placeholder: oklch(0.556 0 0);
+
+  /* ── Text ───────────────────────────────── */
+  --text-primary: oklch(0.985 0 0);
+  --text-secondary: oklch(0.82 0 0);
+  --text-muted: oklch(0.708 0 0);
+  --text-disabled: oklch(0.45 0 0);
+  --text-brand: #6278cc; /* lighter brand on dark        */
+  --text-on-brand: #ffffff;
+
+  /* ── Surfaces ───────────────────────────── */
+  --surface-1: oklch(0.205 0 0);
+  --surface-2: oklch(0.24 0 0);
+  --surface-3: oklch(0.269 0 0);
+  --surface-brand: rgba(56, 82, 180, 0.12);
+  --surface-brand-hover: rgba(56, 82, 180, 0.2);
+
+  /* ── Borders ────────────────────────────── */
+  --border-default: oklch(1 0 0 / 10%);
+  --border-subtle: oklch(1 0 0 / 6%);
+  --border-strong: oklch(1 0 0 / 20%);
+  --border-brand: rgba(56, 82, 180, 0.3);
+  --border-brand-hover: rgba(56, 82, 180, 0.55);
+
+  /* ── States ─────────────────────────────── */
+  --state-success: oklch(0.72 0.18 145);
+  --state-warning: oklch(0.8 0.18 75);
+  --state-error: oklch(0.704 0.191 22.216);
+  --state-info: #6278cc;
+}
 input:focus {
   outline: none;
   box-shadow: none;
@@ -187,6 +322,13 @@ input:focus {
 }
 .hover-text {
   @apply text-primary dark:hover:text-white hover:text-black transition-colors;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 @layer base {
   * {
