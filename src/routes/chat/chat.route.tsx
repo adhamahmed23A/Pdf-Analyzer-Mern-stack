@@ -1,10 +1,9 @@
-/**
- * Imports
- */
+import { Chat } from "./components/chat";
+
 export const ChatRoute = () => {
   return (
-    <>
-      <section className="bg-red-500 w-full h-full ">d</section>
-    </>
+    <section>
+      <Chat />
+    </section>
   );
 };

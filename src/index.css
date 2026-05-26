@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
-
+@source "../node_modules/streamdown/dist/*.js";
 @import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
 
 @custom-variant dark (&:is(.dark *));
@@ -142,7 +142,12 @@
     }
   }
 }
-
+[data-sonner-toast] [data-close-button] {
+  left: auto !important;
+  right: 0 !important;
+  top: 0 !important;
+  background: #e04040b1 !important;
+}
 @keyframes spotlight {
   0% {
     opacity: 0;
