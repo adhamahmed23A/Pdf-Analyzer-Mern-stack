@@ -160,7 +160,7 @@
 }
 
 :root {
-  --background: #f4f4f5;
+  --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -195,8 +195,8 @@
   --btn-destructive-hover: oklch(0.52 0.245 27.325);
 
   /* ── Inputs ─────────────────────────────── */
-  --input-bg: oklch(1 0 0); /* input background              */
-  --input-bg-hover: oklch(0.97 0 0); /* input hover background        */
+  --input-bg: #f4f4f5; /* input background              */
+  --input-bg-hover: #f4f4f55d; /* input hover background        */
   --input-border: oklch(0.922 0 0); /* input border                  */
   --input-border-focus: #3852b4; /* input focused border          */
   --input-text: oklch(0.145 0 0); /* input text color              */
@@ -303,11 +303,7 @@
   --state-error: oklch(0.704 0.191 22.216);
   --state-info: #6278cc;
 }
-input:focus {
-  outline: none;
-  box-shadow: none;
-  ring: 0;
-}
+
 .geist {
   font-family: "Geist", sans-serif;
   font-optical-sizing: auto;
@@ -338,6 +334,10 @@ input:focus {
 @layer base {
   * {
     @apply border-border;
+  }
+  *:focus {
+    outline: none !important;
+    box-shadow: none !important;
   }
   body {
     @apply bg-background text-foreground;

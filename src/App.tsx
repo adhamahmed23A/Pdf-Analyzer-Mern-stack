@@ -8,6 +8,7 @@ import { AuthLayout } from "./layouts/auth.layout";
 import { LoginRoute } from "./routes/auth/login.route";
 import { SignupRoute } from "./routes/auth/signup.route";
 import { DashboardLayout } from "./layouts/dashboard.layout";
+import { StartupRoute } from "./routes/startup/startup.route";
 import { ChatRoute } from "./routes/chat/chat.route";
 
 export default function App() {
@@ -21,8 +22,9 @@ export default function App() {
           <Route path="login" element={<LoginRoute />} />
           <Route path="signup" element={<SignupRoute />} />
         </Route>
-        <Route path="/chat/:id" element={<DashboardLayout />}>
-          <Route index element={<ChatRoute />} />
+        <Route path="/chat" element={<DashboardLayout />}>
+          <Route path="new" element={<StartupRoute />} />
+          <Route path=":id" element={<ChatRoute />} />
         </Route>
       </Routes>
     </>

@@ -15,7 +15,7 @@ export const DashboardLayout = () => {
       <SidebarInset className="m-0! flex min-h-screen flex-1 flex-col p-0!">
         <AppHeader />
 
-        <main className="flex-1 flex-col overflow-hidden ">
+        <main className="flex flex-1 flex-col overflow-hidden min-h-0">
           <Outlet />
         </main>
       </SidebarInset>
