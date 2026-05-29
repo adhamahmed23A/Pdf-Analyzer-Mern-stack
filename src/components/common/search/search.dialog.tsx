@@ -3,16 +3,17 @@
  */
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SearchButton } from "./search.button";
-import { Button } from "@/components/ui/button";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Search } from "lucide-react";
 
 export const SearchDialog = () => {
   return (
@@ -21,19 +22,31 @@ export const SearchDialog = () => {
         <DialogTrigger>
           <SearchButton />
         </DialogTrigger>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Share link</DialogTitle>
-            <DialogDescription>
-              Anyone who has this link will be able to view this.
-            </DialogDescription>
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-md p-2  border border-border bg-background"
+        >
+          <DialogHeader className=" rounded-lg  ">
+            <InputGroup className="max-w-full">
+              <InputGroupInput
+                className="text-sm"
+                placeholder="Search for a chat "
+              />
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+            </InputGroup>
+            <div className="relative  p-2 ">
+              {/* Scrollable list */}
+              <div className="flex flex-col gap-1 overflow-y-auto scrollbar-none py-0.5 h-50">
+                {Array.from({ length: 30 }).map((_, index) => (
+                  <div key={index}>
+                    <span>Item {index + 1}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </DialogHeader>
-
-          <DialogFooter className="sm:justify-start">
-            <DialogClose asChild>
-              <Button type="button">Close</Button>
-            </DialogClose>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>

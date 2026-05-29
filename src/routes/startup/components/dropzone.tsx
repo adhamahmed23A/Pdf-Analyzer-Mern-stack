@@ -3,11 +3,16 @@ import { useCallback, useState } from "react";
 import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { AcceptedFiles } from "./accepted.files";
 import { toast } from "sonner";
+import type { IUploadedFile } from "../types/file.type";
+
 export const Dropzone = () => {
-  const [file, setFile] = useState<File | null>(null);
-  const onDrop = useCallback(<T extends File>(acceptedFiles: T[]) => {
-    console.log(acceptedFiles);
-    setFile(acceptedFiles[0]);
+  const [file, setFile] = useState<IUploadedFile | null>(null);
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const uploadedFile = Object.assign(acceptedFiles[0], {
+      preview: URL.createObjectURL(acceptedFiles[0]),
+    }) as IUploadedFile;
+
+    setFile(uploadedFile);
   }, []);
 
   const Options: DropzoneOptions = {
@@ -36,7 +41,7 @@ export const Dropzone = () => {
 
   return (
     <>
-      <div className="max-w-2xl w mx-auto ">
+      <div className="w-full mx-auto ">
         <div
           {...getRootProps({
             className: `bg-brand-color/10 h-64  ${

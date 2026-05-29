@@ -43,7 +43,7 @@ export const Navbar = () => {
                 <NavLink to={"/auth/login"}>Login</NavLink>
               </Button>
               <Button
-                className="bg-brand-color hover:bg-brand-color/90 font-normal text-sm text-white cursor-pointer  "
+                className="bg-btn-brand hover:bg-btn-brand-hover font-normal text-sm text-white cursor-pointer  "
                 variant={"default"}
               >
                 <NavLink to={"/login"}>Upload Now</NavLink>

@@ -7,6 +7,7 @@ import { ThemeProvider } from "./providers/theme.provider.tsx";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { Toaster } from "@/components/ui/sonner";
 export const queryClient = new QueryClient();
+
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
