@@ -1,7 +1,12 @@
+import { AppSpinner } from "@/components/app.spinner";
 import { Spotlight } from "@/components/ui/spotlight";
-import { Outlet } from "react-router";
+import { authClient } from "@/routes/auth/lib/auth-client";
+import { Navigate, Outlet } from "react-router";
 
 export const AuthLayout = () => {
+  const { data: session, isPending } = authClient.useSession();
+  if (isPending) return <AppSpinner />;
+  if (session) return <Navigate to="/chat/new" replace />;
   return (
     <>
       <main className="w-full min-h-screen relative overflow-hidden ">
