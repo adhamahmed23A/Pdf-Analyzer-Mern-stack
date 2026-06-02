@@ -9,8 +9,10 @@ import { loginSchema } from "./schemas/form.schema";
 import { authClient } from "./lib/auth-client";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 export const LoginRoute = () => {
   const [isPending, setIsPending] = useState<boolean>(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,6 +39,8 @@ export const LoginRoute = () => {
           toast.success("Logged in successfully", {
             position: "top-center",
           });
+          // edit the endpoint redirect !!
+          navigate("/chat/1");
         },
 
         onError: (ctx) => {
