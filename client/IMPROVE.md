@@ -5,6 +5,10 @@
 - [ ] Improve the ui/ux design
 - [ ] use tweakcn for system designs (already made)
 
+## Folder Structure/Naming
+
+- [ ] the file naming is not convenient 
+
 ## Architecture
 
 - [ ] Frontend / components architecture 
