@@ -7,19 +7,7 @@
 
 ## Architecture
 
-- [ ] Centralized API error handling
-- [ ] Axios/fetch wrapper with interceptors
-- [ ] TanStack Query for all data fetching
-- [ ] React Error Boundaries on major sections
+- [ ] Frontend / components architecture 
 
-## Performance
-
-- [ ] Lazy loading for heavy pages
-- [ ] Image optimization
-- [ ] Bundle size analysis (vite-bundle-analyzer)
-
-## Production
-
-- [ ] Environment variables validation
-- [ ] SEO meta tags
-- [ ] 404 page
+## State Mangement
+- [ ] Zustand (the whole project i used the global context)
