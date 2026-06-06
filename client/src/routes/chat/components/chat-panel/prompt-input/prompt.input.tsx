@@ -27,7 +27,7 @@ export const PromptTextArea = () => {
       onInput={handleResize}
       value={value}
       onChange={(e) => setInput(e.target.value)}
-      placeholder="Ask something about the PDF"
+      placeholder="How can I help you?"
       className="
             w-full
             min-h-0

@@ -5,7 +5,7 @@ type ProtectedRouteProps = {
   children: React.ReactNode;
 };
 export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const { isLoading, session, isLoggingOut } = useGetSession();
+  const { isLoading, session, isLoggingOut, user } = useGetSession();
   if (isLoading) return <AppSpinner />;
   if (isLoggingOut) return <Navigate to="/" replace />;
   if (!session) return <Navigate to="/auth/login" replace />;

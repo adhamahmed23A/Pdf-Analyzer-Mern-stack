@@ -1,3 +1,5 @@
+import { PdfDrop } from "./pdf.drop";
+
 type Props = {
   url: string;
 };
@@ -5,10 +7,12 @@ type Props = {
 export const PDFViewer = ({ url }: Props) => {
   return (
     <>
-      <iframe
+      <PdfDrop />
+
+      {/* <iframe
         className="w-full h-full"
         src={`https://docs.google.com/gview?url=${url}&embedded=true`}
-      ></iframe>
+      ></iframe> */}
     </>
   );
 };

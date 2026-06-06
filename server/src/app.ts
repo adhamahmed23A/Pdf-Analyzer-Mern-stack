@@ -1,12 +1,16 @@
 import express, { Application, Request, Response } from "express";
-import { errorMiddleware } from "./middlewares/error.middleware.js";
+import { errorMiddleware } from "./middlewares/error-middleware.js";
 import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
-import { Auth } from "./features/auth/lib/better-auth.js";
+import { Auth } from "./features/auth/better-auth.js";
+// ── Import Routes ──────────────────────────────────────────────
+import documentRoute from "./features/document/document-route.js";
+
 export const createApp = (auth: Auth): Application => {
   const app = express();
   const NODE_ENV = process.env.NODE_ENV;
   const CLIENT_URL = process.env.CLIENT_URL;
+
   // ── Security ──────────────────────────────────────────────
   // app.use(helmet());
 
@@ -20,12 +24,15 @@ export const createApp = (auth: Auth): Application => {
     }),
   );
 
-  // ── Better-Auth Configuration ──────────────────────────────────────────────────
-  app.all("/api/auth/*splat", toNodeHandler(auth));
-
   // ── Body Parsing ──────────────────────────────────────────
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // ── Better-Auth Configuration ──────────────────────────────────────────────────
+  app.all("/api/auth/*splat", toNodeHandler(auth));
+
+  // ── Static Assets ──────────────────────────────────────────
+  app.use(express.static("public"));
 
   // ── Health Check ──────────────────────────────────────────
   app.get("/health", (_req: Request, res: Response) => {
@@ -34,12 +41,9 @@ export const createApp = (auth: Auth): Application => {
 
   // ── Routes ────────────────────────────────────────────────
   // app.use("/api/users", userRouter)
-  // app.use("/api/posts", postRouter)
+  app.use("/api/document", documentRoute);
 
   // ── 404 Handler ───────────────────────────────────────────
-  app.use((_req: Request, res: Response) => {
-    res.status(404).json({ message: "Route not found" });
-  });
 
   // ── Global Error Middleware ──────────────────────────────────
   app.use(errorMiddleware);

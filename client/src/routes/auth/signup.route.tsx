@@ -9,11 +9,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { authClient } from "./lib/auth-client";
 import { toast } from "sonner";
 import { useState } from "react";
-import { useNavigate } from "react-router";
 
 export const SignupRoute = () => {
   const [isPending, setIsPending] = useState<boolean>(false);
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -47,7 +45,7 @@ export const SignupRoute = () => {
             position: "top-center",
           });
           // edit the endpoint redirect !!
-          navigate("/chat/1");
+          // navigate("/");
         },
 
         onError: (ctx) => {

@@ -6,7 +6,7 @@ export const EmptyConversation = () => {
     "bg-clip-text text-transparent bg-gradient-to-r dark:from-zinc-200 dark:via-zinc-300 dark:to-zinc-300 from-zinc-700 via-zinc-800 to-zinc-900";
 
   return (
-    <div className="max-w-full mt-16 text-center flex gap-2 justify-center items-center">
+    <div className="max-w-full mt-16 text-center  flex flex-col lg:flex-row gap-2 justify-center items-center">
       <div>
         <LogoWithoutText />
       </div>
