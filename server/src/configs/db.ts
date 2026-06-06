@@ -1,32 +1,44 @@
 import { MongoClient } from "mongodb";
 import mongoose from "mongoose";
+import { env } from "./env.js";
+
+const { MONGOOSE_URL } = env;
+
+let mongoClient: MongoClient | null = null;
 
 export const connectDB = async () => {
-  const MONGOOSE_URL = process.env.MONGOOSE_URL;
-  if (!MONGOOSE_URL) {
-    console.error("MONGOOSE_URL is not defined in environment variables");
-    process.exit(1);
-  }
   try {
+    // Setup mongoose connection listeners
     mongoose.connection.on("connected", () => {
-      console.log("✅ MongoDB connected successfully");
+      console.log("[DB] ✅ Mongoose connected successfully");
     });
 
     mongoose.connection.on("error", (err) => {
-      console.error("❌ MongoDB connection error:", err);
+      console.error("[DB] ❌ Mongoose connection error:", err);
     });
 
     mongoose.connection.on("disconnected", () => {
-      console.warn("⚠️ MongoDB disconnected");
+      console.warn("[DB] ⚠️ Mongoose disconnected");
     });
 
+    // Connect mongoose
     await mongoose.connect(MONGOOSE_URL);
-    return mongoose.connection.getClient() as unknown as MongoClient;
+
+    // Create and connect MongoDB client for better-auth
+    mongoClient = new MongoClient(MONGOOSE_URL);
+    await mongoClient.connect();
+    console.log("[DB] ✅ MongoDB client for auth connected successfully");
+
+    return mongoClient;
   } catch (error) {
-    console.error("❌Error connecting to MongoDB:", error);
+    console.error("[DB] ❌ Error connecting to MongoDB:", error);
     process.exit(1);
   }
 };
-export const getMongoClient = () => {
-  return mongoose.connection.getClient() as unknown as MongoClient;
+
+export const getMongoClient = (): MongoClient => {
+  if (!mongoClient) {
+    throw new Error("MongoDB client not initialized. Call connectDB() first.");
+  }
+  return mongoClient;
 };

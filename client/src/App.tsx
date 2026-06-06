@@ -8,7 +8,6 @@ import { AuthLayout } from "./layouts/auth.layout";
 import { LoginRoute } from "./routes/auth/login.route";
 import { SignupRoute } from "./routes/auth/signup.route";
 import { DashboardLayout } from "./layouts/dashboard.layout";
-import { StartupRoute } from "./routes/startup/startup.route";
 import { ChatRoute } from "./routes/chat/chat.route";
 import { NotFoundRoute } from "./routes/not-found/not-found.route";
 import { ProtectedRoute } from "./routes/protected/protected.route";
@@ -32,7 +31,6 @@ export default function App() {
             </ProtectedRoute>
           }
         >
-          <Route path="new" element={<StartupRoute />} />
           <Route path=":id" element={<ChatRoute />} />
         </Route>
         <Route path="*" element={<NotFoundRoute />} />
