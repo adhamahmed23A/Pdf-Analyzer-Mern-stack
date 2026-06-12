@@ -3,8 +3,8 @@ import "./configs/env.js";
 // Import the app
 import { createApp } from "./app.js";
 import { connectDB } from "./configs/db.js";
-import { createAuth } from "./features/auth/better-auth.js";
 import dns from "dns";
+import { getVectorStore } from "./configs/vector-store.js";
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 const startServer = async (): Promise<void> => {
@@ -13,13 +13,10 @@ const startServer = async (): Promise<void> => {
 
   try {
     // ── Database Connection ───────────────────────────────────────────
-    const mongoClient = await connectDB();
-
-    // ── Initialize Auth ───────────────────────────────────────────
-    const auth = createAuth(mongoClient);
-
+    await connectDB();
+    getVectorStore();
     // ── Create Express App ───────────────────────────────────────────
-    const app = createApp(auth);
+    const app = createApp();
 
     // ── Start Server ───────────────────────────────────────────
     app.listen(PORT, () => {

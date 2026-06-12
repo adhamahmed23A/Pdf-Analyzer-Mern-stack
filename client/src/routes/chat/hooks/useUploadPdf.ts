@@ -3,6 +3,7 @@ import { uploadPdfAction } from "../actions";
 import { useCallback, useRef, useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
+import { usePdf } from "./usePdf";
 
 type TUploadPdf = {
   setSelectedFile: React.Dispatch<React.SetStateAction<File | null>>;
@@ -10,6 +11,7 @@ type TUploadPdf = {
 
 export const useUploadPdf = ({ setSelectedFile }: TUploadPdf) => {
   const abortControllerRef = useRef<AbortController | null>(null);
+  const { setFileUrl } = usePdf();
   const [progress, setProgress] = useState(0);
   const { mutate, isPending } = useMutation({
     mutationFn: (file: File) => {
@@ -21,7 +23,9 @@ export const useUploadPdf = ({ setSelectedFile }: TUploadPdf) => {
         abortControllerRef.current.signal,
       );
     },
-    onSuccess: () => {
+
+    onSuccess: (data) => {
+      setFileUrl(data.data.signedUrl);
       setSelectedFile(null);
       toast.success("PDF is analyzed successfully");
     },
@@ -41,6 +45,7 @@ export const useUploadPdf = ({ setSelectedFile }: TUploadPdf) => {
       setTimeout(() => setProgress(0), 1500);
     },
   });
+
   const cancel = useCallback(() => {
     abortControllerRef.current?.abort();
   }, []);

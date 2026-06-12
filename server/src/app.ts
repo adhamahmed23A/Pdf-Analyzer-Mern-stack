@@ -2,15 +2,14 @@ import express, { Application, Request, Response } from "express";
 import { errorMiddleware } from "./middlewares/error-middleware.js";
 import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
-import { Auth } from "./features/auth/better-auth.js";
 // ── Import Routes ──────────────────────────────────────────────
-import documentRoute from "./features/document/document-route.js";
+import { getAuth } from "./features/auth/better-auth.js";
+import { asyncHandler } from "./utils/async-handler.js";
 
-export const createApp = (auth: Auth): Application => {
+export const createApp = (): Application => {
   const app = express();
   const NODE_ENV = process.env.NODE_ENV;
   const CLIENT_URL = process.env.CLIENT_URL;
-
   // ── Security ──────────────────────────────────────────────
   // app.use(helmet());
 
@@ -29,7 +28,8 @@ export const createApp = (auth: Auth): Application => {
   app.use(express.urlencoded({ extended: true }));
 
   // ── Better-Auth Configuration ──────────────────────────────────────────────────
-  app.all("/api/auth/*splat", toNodeHandler(auth));
+
+  app.all("/api/auth/*splat", toNodeHandler(getAuth()));
 
   // ── Static Assets ──────────────────────────────────────────
   app.use(express.static("public"));
@@ -41,7 +41,19 @@ export const createApp = (auth: Auth): Application => {
 
   // ── Routes ────────────────────────────────────────────────
   // app.use("/api/users", userRouter)
-  app.use("/api/document", documentRoute);
+  let documentRouter: express.Router | undefined;
+
+  app.use(
+    "/api/document",
+    asyncHandler(async (req, res, next) => {
+      if (!documentRouter) {
+        const { default: router } =
+          await import("./features/document/document-route.js");
+        documentRouter = router;
+      }
+      documentRouter(req, res, next);
+    }),
+  );
 
   // ── 404 Handler ───────────────────────────────────────────
 

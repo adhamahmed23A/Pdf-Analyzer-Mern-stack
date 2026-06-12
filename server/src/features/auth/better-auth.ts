@@ -1,7 +1,10 @@
 import { betterAuth } from "better-auth";
 import { env } from "../../configs/env.js";
-import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { getMongoClient } from "../../configs/db.js";
+import { AppError } from "../../errors/app-error.js";
+import { getHttpStatus } from "../../constants/http.js";
+
 const {
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET,
@@ -11,8 +14,9 @@ const {
   BETTER_AUTH_URL,
   CLIENT_URL,
 } = env;
-
-export const createAuth = (mongoClient: MongoClient) => {
+// Logic function to create the auth instance
+const createAuth = () => {
+  const mongoClient = getMongoClient();
   const db = mongoClient.db();
 
   return betterAuth({
@@ -55,5 +59,23 @@ export const createAuth = (mongoClient: MongoClient) => {
     },
   });
 };
-
+// Type for the auth instance
 export type Auth = ReturnType<typeof createAuth>;
+//  Lazy initialization
+let authInstance: Auth | undefined;
+
+export const getAuth = (): Auth => {
+  if (!authInstance) {
+    try {
+      authInstance = createAuth();
+    } catch (error) {
+      throw new AppError(
+        "Failed to create auth instance",
+        getHttpStatus("INTERNAL_SERVER_ERROR"),
+        "Auth instance creation failed",
+        false,
+      );
+    }
+  }
+  return authInstance;
+};
