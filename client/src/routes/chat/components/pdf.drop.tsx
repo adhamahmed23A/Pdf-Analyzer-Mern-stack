@@ -5,10 +5,11 @@ import { Upload, FileText, X } from "lucide-react";
 import { useUploadPdf } from "../hooks/useUploadPdf";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { UploadSkeleton } from "./skeletons/pdf.upload.skeleton";
 
 export const PdfDrop = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const { upload, isPending, progress, cancel } = useUploadPdf({
+  const { upload, isPending, cancel } = useUploadPdf({
     setSelectedFile,
   });
 
@@ -63,43 +64,33 @@ export const PdfDrop = () => {
       <div className="w-full h-full flex items-center justify-center p-4">
         <div className="w-full max-w-md flex flex-col items-center justify-center gap-6 p-8 rounded-xl border border-border">
           {/* File Icon */}
-          <div className="p-4 rounded-lg bg-gradient-to-br from-brand-color/20 to-brand-color/10 border border-brand-color/20">
-            <FileText className="w-7 h-7 text-brand-color/40" />
-          </div>
-
-          {/* File Info */}
-          <div className="relative w-fit text-center  flex flex-col gap-2">
-            {!isPending && (
-              <Button
-                onClick={handleRemoveFile}
-                variant={"destructive"}
-                className="p-1! h-7! text-red-300! absolute -top-7 -right-4 cursor-pointer  rounded-md"
-              >
-                <X className="w-4 h-4 " />
-              </Button>
-            )}
-            <h3 className="font-semibold text-lg  text-foreground line-clamp-2">
-              {documentName(selectedFile.name)}
-            </h3>
-            <p className="text-sm text-muted-foreground ">
-              {formatFileSize(selectedFile.size)}
-            </p>
-
-            {/* Progress Bar */}
-            {progress > 0 && (
-              <div className=" w-full">
-                <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-brand-color to-brand-color/80 transition-all duration-300"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">
-                  {progress}% uploaded
-                </p>
+          {isPending ? (
+            <UploadSkeleton />
+          ) : (
+            <>
+              <div className="p-4 rounded-lg bg-gradient-to-br from-brand-color/20 to-brand-color/10 border border-brand-color/20">
+                <FileText className="w-7 h-7 text-brand-color/40" />
               </div>
-            )}
-          </div>
+
+              {/* File Info */}
+              <div className="relative w-fit text-center  flex flex-col gap-2">
+                <h3 className="font-semibold text-lg  text-foreground line-clamp-2">
+                  {documentName(selectedFile.name)}
+                </h3>
+                <p className="text-sm text-muted-foreground ">
+                  {formatFileSize(selectedFile.size)}
+                </p>
+                <Button
+                  onClick={handleRemoveFile}
+                  variant="destructive"
+                  size="icon"
+                  className="absolute -top-4 -right-4 h-6 w-6 rounded-full shadow-md z-10"
+                >
+                  <X className="w-3 h-3" />
+                </Button>
+              </div>
+            </>
+          )}
 
           {/* Actions */}
           <div className="max-w-fit flex flex-col gap-3">
@@ -108,7 +99,7 @@ export const PdfDrop = () => {
               className="bg-btn-brand hover:bg-btn-brand-hover font-normal text-sm text-white cursor-pointer  "
               variant={isPending ? "destructive" : "default"}
             >
-              {isPending || progress > 0 ? "Stop Analyzing" : "Analyze Now"}
+              {isPending ? "Cancel Now" : "Analyze Now"}
             </Button>
           </div>
         </div>

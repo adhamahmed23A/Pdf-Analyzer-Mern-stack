@@ -24,6 +24,14 @@ const envSchema = z.object({
   // Resend
   GMAIL_USER: z.string().email(),
   GMAIL_APP_PASSWORD: z.string().min(1), // validate it's actually an email
+
+  // Supabase
+  SUPABASE_URL: z.string().url(),
+  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
+  SUPABASE_BUCKET: z.string().min(1),
+
+  GOOGLE_EMBEDDING_API_KEY: z.string().min(1),
+  EMBEDDING_MODEL: z.string().min(1),
 });
 
 const { success, data, error } = envSchema.safeParse(process.env);

@@ -1,18 +1,19 @@
+import { usePdf } from "../hooks/usePdf";
 import { PdfDrop } from "./pdf.drop";
 
-type Props = {
-  url: string;
-};
-
-export const PDFViewer = ({ url }: Props) => {
+export const PDFViewer = () => {
+  const { fileUrl } = usePdf();
+  console.log(fileUrl);
   return (
     <>
-      <PdfDrop />
-
-      {/* <iframe
-        className="w-full h-full"
-        src={`https://docs.google.com/gview?url=${url}&embedded=true`}
-      ></iframe> */}
+      {fileUrl ? (
+        <iframe
+          className="w-full h-full"
+          src={`https://docs.google.com/gview?url=${fileUrl}&embedded=true`}
+        />
+      ) : (
+        <PdfDrop />
+      )}
     </>
   );
 };

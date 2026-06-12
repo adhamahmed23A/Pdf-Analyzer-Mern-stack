@@ -1,5 +1,10 @@
 import { api } from "@/api/axios";
-
+type Data = {
+  data: {
+    signedUrl: string;
+  };
+  success: boolean;
+};
 export const uploadPdfAction = async (
   file: File,
   onProgress: (percent: number) => void,
@@ -8,7 +13,7 @@ export const uploadPdfAction = async (
   const formData = new FormData();
   formData.append("document", file);
 
-  const { data } = await api.post("/api/document/upload", formData, {
+  const { data } = await api.post<Data>("/api/document/upload", formData, {
     signal,
     headers: {
       "Content-Type": "multipart/form-data",
